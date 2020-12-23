@@ -36,7 +36,10 @@ def save_emails_to_s3(emails):
 ## Error route to test out deploy rollback if alarms start firing
 ## Deploy new version then hit this endpoint to test rollback
 @app.route('/error')
-def throw_error():
+def server_error():
+    throw_exception()
+
+def throw_exception():
     raise ExpectedError
 
 class ExpectedError(Exception):
